@@ -11,12 +11,14 @@ import logo from '../../assets/xar-logo.png'
 
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import OpacityIcon from '@material-ui/icons/Opacity';
+import GavelIcon from '@material-ui/icons/Gavel';
 
 const styles = theme => ({
   menuContainer: {
     width: '70px',
     display: 'inline-block',
     background: colors.menu,
+    minHeight: '100vh'
   },
   menuButton: {
     height: '70px'
@@ -80,6 +82,9 @@ class Menu extends Component {
         <Grid item className={ classes.menuButton } >
           { this.renderButton('liquidations') }
         </Grid>
+        <Grid item className={ classes.menuButton } >
+          { this.renderButton('governance') }
+        </Grid>
       </React.Fragment>
     )
   }
@@ -108,6 +113,16 @@ class Menu extends Component {
         iconButton = (
           <Tooltip title="Liquidations" placement="right">
             <OpacityIcon className={ `${classes.iconButton} ${selected}` } onClick={() => { this.menuClicked('/liquidation') }} />
+          </Tooltip>
+        )
+        break;
+      case 'governance':
+        if(window.location.pathname.includes("/governance")) {
+          selected = classes.selected
+        }
+        iconButton = (
+          <Tooltip title="Governance" placement="right">
+            <GavelIcon className={ `${classes.iconButton} ${selected}` } onClick={() => { this.menuClicked('/governance') }} />
           </Tooltip>
         )
         break;
